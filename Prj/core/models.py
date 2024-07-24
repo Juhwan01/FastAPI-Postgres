@@ -20,3 +20,9 @@ class Farmer(Base):
     animal_types = Column(String(255))
     license_number_farmer = Column(String(50), unique=True, nullable=False)
     
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, index=True)
+    email = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
