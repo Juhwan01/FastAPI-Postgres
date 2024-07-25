@@ -54,9 +54,9 @@ async def provide_session():
         try:
             yield session
         except Exception as e:
-            session.rollback()
+            await session.rollback()
             raise e
         else:
-            session.commit()
+            await session.commit()
         finally:
-            session.close()
+            await session.close()

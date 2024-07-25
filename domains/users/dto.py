@@ -18,3 +18,11 @@ class FarmerJoinDTO(BaseModel):
         animal_types: str
         license_number_farmer: str
     data: DTO
+
+class UserLoginDTO(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    token: str
+    type: str

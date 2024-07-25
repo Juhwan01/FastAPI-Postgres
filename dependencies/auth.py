@@ -10,9 +10,6 @@ conf_vars = get_config()
 secret_key = conf_vars.jwt_secret_key
 jwt_expire_minutes = conf_vars.jwt_expire_minutes
 
-class Token(BaseModel):
-    token: str
-    type: str
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)

@@ -41,3 +41,12 @@ class UserRepository:
                 await self._session.rollback()
                 raise HTTPException(status_code=400, detail="Database integrity error: " + str(e))
             return farmer_entity
+        
+    async def get_user_by_username(self, username: str) -> FarmersModel:
+        async with self._session.begin():
+            query = select(FarmersModel).where(FarmersModel.user_id_farmer == username)
+            result = await self._session.execute(query)
+            user = result.scalar_one_or_none()
+            if user is None:
+                raise HTTPException(status_code=404, detail="User not found")
+            return user

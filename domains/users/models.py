@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, String, Integer, func, Date
+from sqlalchemy import Column, DateTime, String, Integer, func, Date, FLOAT
 from dependencies.database import Base
 
 class FarmersModel(Base):
@@ -18,3 +18,10 @@ class FarmersModel(Base):
     farm_address = Column(String(255), nullable=False)
     animal_types = Column(String(255), nullable=True)
     license_number_farmer = Column(String(50), unique=True, nullable=False)
+
+class VeterinariansModel(Base):
+    __tablename__ = "veterinarians"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), nullable=False)
+    latitude = Column(FLOAT, nullable=False)
+    longitude = Column(FLOAT, nullable=False)
